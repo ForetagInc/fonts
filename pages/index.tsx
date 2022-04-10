@@ -1,10 +1,16 @@
+import * as React from 'react';
+
 import type { NextPage } from 'next';
 import type { IFont } from './interfaces';
 
-import { fonts } from '../public/data.json';
+import * as fonts from '../public/data.json';
 import { useStore } from '../lib/store';
 
 const Home: NextPage = () => {
+	const customMap = ['molle', 'syne-italic'];
+
+	const { content, updateContent, fontSize } = useStore(s => s);
+
 
 	const loadStylesheet = (url: string) => {
 		if (typeof window !== 'undefined') {
@@ -18,8 +24,6 @@ const Home: NextPage = () => {
 			head.appendChild(link);
 		}
 	}
-
-	const { content, fontSize } = useStore(s => s);
 
 	return (
 		<div className='h:100vh f:gray-60 bg:gray-80@dark f:white@dark'>
@@ -35,14 +39,23 @@ const Home: NextPage = () => {
 
 			<div className='mx:auto w:80% py:24'>
 				<div className='mb:20'>
-					Test
+					<input
+						type='text'
+						value={content}
+						onChange={e => {
+							e.preventDefault();
+							updateContent(e.target.value);
+						}}
+					/>
 				</div>
 
 				<div className='p:grid grid-cols:3@lg grid-cols:2@md grid-cols:1 gap:20'>
 					{
-						(fonts as IFont[]).map(
+						(fonts as unknown as IFont[]).map(
 							(font, index) => {
-								loadStylesheet(`https://cdn.jsdelivr.net/npm/${font.package}@4.5/300.css`);
+								let url = customMap.includes(font.id) ? 'latin' : font.weights[0];
+
+								loadStylesheet(`https://cdn.jsdelivr.net/npm/@fontsource/${font.id}@latest/${url}.css`);
 
 								return <div
 									key={index}
@@ -50,14 +63,14 @@ const Home: NextPage = () => {
 								>
 									<div className='d:flex justify-content:space-between w:100%'>
 										<div>
-											<p className='f:18'>{font.name}</p>
-											<small>{font.by}</small>
+											<p className='f:18'>{font.family}</p>
+											<small>{font.category}</small>
 										</div>
 										<small>
-											6 styles
+											{font.weights.length} styles
 										</small>
 									</div>
-									<p className='mt:20' style={{ fontSize, fontFamily: font.name }}>
+									<p className='mt:20' style={{ fontSize, fontFamily: font.family }}>
 										{content}
 									</p>
 								</div>

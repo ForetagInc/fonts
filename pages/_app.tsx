@@ -2,9 +2,21 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 
 import '@master/styles';
+import * as React from 'react';
 
-function MyApp({ Component, pageProps }: AppProps) {
-	return <Component {...pageProps} />
+
+const SafeHydrate: React.FC<React.PropsWithChildren<{}>> = (props) => {
+	return (
+		<div suppressHydrationWarning>
+			{typeof window === 'undefined' ? null : props.children}
+		</div>
+	)
 }
 
-export default MyApp
+function App({ Component, pageProps }: AppProps) {
+	return <SafeHydrate>
+		<Component {...pageProps} />
+	</SafeHydrate>;
+}
+
+export default App;
