@@ -1,0 +1,94 @@
+{
+	"fonts": [
+		{
+			"name": "Roboto",
+			"package": "@fontsource/roboto",
+			"by": [
+				"Christian Robertson"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		},
+		{
+			"name": "Roboto Condensed",
+			"package": "@fontsource/roboto-condensed",
+			"by": [
+				"Christian Robertson"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		},
+		{
+			"name": "Roboto Mono",
+			"package": "@fontsource/roboto-mono",
+			"by": [
+				"Christian Robertson"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		},
+		{
+			"name": "Open Sans",
+			"package": "@fontsource/open-sans",
+			"by": [
+				"Steve Matteson"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		},
+		{
+			"name": "Montserrat",
+			"package": "@fontsource/montserrat",
+			"by": [
+				"Juan Pablo del Peral"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		},
+		{
+			"name": "Jetbrains Mono",
+			"package": "@fontsource/jetbrains-mono",
+			"by": [
+				"JetBrains"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		},
+		{
+			"name": "Ubuntu",
+			"package": "@fontsource/ubuntu",
+			"by": [
+				"Dalton Maag"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		},
+		{
+			"name": "Oswald",
+			"package": "@fontsource/oswald",
+			"by": [
+				"Vernon Adams"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		},
+		{
+			"name": "Raleway",
+			"package": "@fontsource/raleway",
+			"by": [
+				"Pablo Impallari"
+			],
+			"type": [
+				"Sans Serif"
+			]
+		}
+	]
+}
