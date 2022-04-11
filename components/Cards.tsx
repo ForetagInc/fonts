@@ -5,14 +5,32 @@ import { useStore } from '../lib/store';
 
 import fonts from '../public/data.json';
 
-export const Cards: React.FC = () => {
+interface ICards {
+	search: string;
+}
+
+export const Cards: React.FC<ICards> = ({ search }) => {
 	const { content, fontSize } = useStore(s => s);
 
+	// These fonts do not load font weights as fontsource does not support it.
+	// Instead these fonts store the CSS as 'latin' directly.
 	const customMap = ['molle', 'syne-italic'];
 
 	const fontsPerPage = 12;
+	const defaultFonts = fonts.slice(0, fontsPerPage);
+
 	const [lastViewPosition, setLastViewPosition] = React.useState(fontsPerPage);
-	const [loadedFonts, setLoadedFonts] = React.useState<IFont[]>(fonts.slice(0, fontsPerPage));
+
+	const [fontCache, setFontCache] = React.useState<IFont[]>([]);
+	const [loadedFonts, setLoadedFonts] = React.useState<IFont[]>(defaultFonts);
+
+	const displayFonts = search ? fontCache : loadedFonts;
+
+	// Search functionality
+	React.useEffect(() => {
+		if (search.length > 0)
+			setFontCache(fonts.filter(({ family }) => family.includes(search)));
+	}, [search]);
 
 	React.useEffect(() => {
 		if (typeof window !== 'undefined') {
@@ -22,17 +40,16 @@ export const Cards: React.FC = () => {
 				// @ts-ignore
 				const scrollHeight: number = e.target.documentElement.scrollHeight;
 
-				if (window.innerHeight + scrollTop + 1 >= scrollHeight) {
+				if (window.innerHeight + scrollTop + 300 >= scrollHeight) {
 					setLoadedFonts(
-						current => {
-							return current.concat(fonts.slice(lastViewPosition, lastViewPosition + fontsPerPage));
-						});
+						current => current.concat(fonts.slice(lastViewPosition, lastViewPosition + fontsPerPage))
+					);
 
 					setLastViewPosition(current => current + fontsPerPage);
 				}
 			});
 		}
-	});
+	}, []);
 
 	const loadStylesheet = (url: string) => {
 		if (typeof window !== 'undefined') {
@@ -50,7 +67,7 @@ export const Cards: React.FC = () => {
 	return (
 		<div className='p:grid grid-cols:3@lg grid-cols:2@md grid-cols:1 gap:20'>
 			{
-				loadedFonts.map(
+				displayFonts.map(
 					(font, index) => {
 						let url = customMap.includes(font.id) ? 'latin' : font.weights[0];
 
