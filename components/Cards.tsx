@@ -11,7 +11,7 @@ export const Cards: React.FC = () => {
 	const customMap = ['molle', 'syne-italic'];
 
 	const fontsPerPage = 12;
-	const [lastViewPosition, setLastViewPosition] = React.useState(0);
+	const [lastViewPosition, setLastViewPosition] = React.useState(fontsPerPage);
 	const [loadedFonts, setLoadedFonts] = React.useState<IFont[]>(fonts.slice(0, fontsPerPage));
 
 	React.useEffect(() => {
@@ -24,12 +24,8 @@ export const Cards: React.FC = () => {
 
 				if (window.innerHeight + scrollTop + 1 >= scrollHeight) {
 					setLoadedFonts(
-						// @ts-ignore
 						current => {
-							return [
-								...current,
-								fonts.slice(lastViewPosition, lastViewPosition + fontsPerPage)
-							]
+							return current.concat(fonts.slice(lastViewPosition, lastViewPosition + fontsPerPage));
 						});
 
 					setLastViewPosition(current => current + fontsPerPage);
