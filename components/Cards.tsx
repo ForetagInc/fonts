@@ -41,15 +41,20 @@ export const Cards: React.FC<ICards> = ({ search }) => {
 				const scrollHeight: number = e.target.documentElement.scrollHeight;
 
 				if (window.innerHeight + scrollTop + 300 >= scrollHeight) {
-					setLoadedFonts(
-						current => current.concat(fonts.slice(lastViewPosition, lastViewPosition + fontsPerPage))
-					);
-
 					setLastViewPosition(current => current + fontsPerPage);
 				}
 			});
 		}
 	}, []);
+
+	React.useEffect(() => {
+		setLoadedFonts(
+			current => [
+				...current,
+				...fonts.slice(lastViewPosition, lastViewPosition + fontsPerPage)
+			]
+		);
+	}, [lastViewPosition]);
 
 	const loadStylesheet = (url: string) => {
 		if (typeof window !== 'undefined') {
