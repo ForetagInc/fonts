@@ -11,6 +11,8 @@ import { Layout } from '../../layouts/App';
 import { useStore } from '../../lib/store';
 import { loadStylesheet } from '../../lib/util';
 
+import { toast } from 'react-hot-toast';
+
 const Font: NextPage = () => {
 	// These fonts do not load font weights as fontsource does not support it.
 	// Instead these fonts store the CSS as 'latin' directly.
@@ -54,7 +56,19 @@ const Font: NextPage = () => {
 		<Layout
 			title={currentFont?.family as string}
 		>
-			<h1>{currentFont?.family}</h1>
+			<div className='d:flex justify-content:space-between align-items:center'>
+				<h1 className='f:36'>{currentFont?.family}</h1>
+				<div>
+					<button
+						className='f:24'
+						onClick={(e) => {
+							e.preventDefault();
+						}}
+					>
+						<i className='ri-add-line' />
+					</button>
+				</div>
+			</div>
 
 			<ul>
 				{
@@ -64,7 +78,7 @@ const Font: NextPage = () => {
 								key={index}
 								className='bb:1 b:gray-80 py:40'
 							>
-								<p className='mb:20'>
+								<p className='mb:20 f:gray-60'>
 									{
 										// @ts-ignore
 										fontMap[weight]

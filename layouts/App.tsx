@@ -31,7 +31,12 @@ export const Layout: React.FC<ILayoutProps> = (props) => {
 			</Head>
 			<div className='py:16 bb:1 b:gray-10 b:gray-60@dark'>
 				<div className='d:flex mx:auto w:80% justify-content:space-between align-items:center'>
-					<h1 className='f:24 f:regular'>
+					<h1 className='d:flex align-items:center f:24 f:regular'>
+						<img
+							className='h:36 mr:8'
+							src={`${window?.location.origin}/images/logo.svg`}
+							alt='Foretag Logo'
+						/>
 						Fonts
 					</h1>
 
