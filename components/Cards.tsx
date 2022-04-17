@@ -83,7 +83,7 @@ export const Cards: React.FC<ICards> = ({ search }) => {
 
 						return <Link
 							key={index}
-							href={`/specimen/${font.id}`}
+							href={`/specimen/${font.family}`}
 						>
 							<div
 								className='b:1 b:gray-7 b:gray-60@dark r:10 px:16 py:24 bg:fade-5:hover bg:fade-90:hover@dark cursor:pointer f:black f:white@dark min-h:300'

@@ -8,22 +8,11 @@ import { Cards } from '../components/Cards';
 
 const Home: NextPage = () => {
 	const {
-		isDark,
 		toggleTheme,
 		fontSize,
 		content,
 		updateContent
 	} = useStore(s => s);
-
-	// Theme selector
-	React.useEffect(() => {
-		let html = document.querySelector('html')?.classList;
-
-		if (isDark)
-			html?.add('dark');
-		else
-			html?.remove('dark');
-	}, [isDark]);
 
 	const [search, setSearch] = React.useState('');
 
