@@ -4,6 +4,7 @@ import 'remixicon/fonts/remixicon.css';
 import type { AppProps } from 'next/app';
 
 import '@master/styles';
+
 import * as React from 'react';
 
 

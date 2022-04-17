@@ -2,21 +2,30 @@ import Zustand from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface IStore {
-	mode: 'light' | 'dark';
+	isDark: boolean;
 	content: string;
 	fontSize: number;
-	updateContent: (newContent: string) => void;
+
+	toggleTheme: () => void;
+	updateContent: (newString: string) => void;
 };
 
 export const useStore = Zustand<IStore>(persist(
 	(set, get) => ({
-		mode: 'light',
+		isDark: typeof window !== 'undefined' ?
+			window.matchMedia('(prefers-color-scheme: dark)').matches : false,
+
 		content: 'Almost before we knew it, we had left the ground.',
 		fontSize: 40,
-		updateContent: (newContent: string) => set({ content: newContent })
+
+		/* Actions */
+		toggleTheme: () => set({ isDark: !get().isDark }),
+		updateContent: (newContent: string) => set({ content: newContent }),
 	}),
 	{
-		name: 'persist',
-		getStorage: () => localStorage
+		name: 'fonts',
+		getStorage: () => localStorage,
 	}
 ));
+
+export const { getState, subscribe } = useStore;

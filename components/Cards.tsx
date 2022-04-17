@@ -47,6 +47,7 @@ export const Cards: React.FC<ICards> = ({ search }) => {
 		}
 	}, []);
 
+	// Load fonts when the lastViewPosition changes
 	React.useEffect(() => {
 		setLoadedFonts(
 			current => [

@@ -6,7 +6,17 @@ import { useStore } from '../lib/store';
 import { Cards } from '../components/Cards';
 
 const Home: NextPage = () => {
-	const { content, updateContent } = useStore(s => s);
+	const { isDark, content, updateContent, toggleTheme } = useStore(s => s);
+
+	// Theme selector
+	React.useEffect(() => {
+		let html = document.querySelector('html')?.classList;
+
+		if (isDark)
+			html?.add('dark');
+		else
+			html?.remove('dark');
+	}, [isDark]);
 
 	const [search, setSearch] = React.useState('');
 
@@ -18,16 +28,19 @@ const Home: NextPage = () => {
 						Fonts
 					</h1>
 
-					<p>Test</p>
+					<i
+						className='ri-contrast-fill f:20 f:blue-40:hover cursor:pointer'
+						onClick={() => toggleTheme()}
+					/>
 				</div>
 			</div>
 
 			<div className='mx:auto w:80% py:24'>
 				<div className='d:flex mb:20 b:1 r:30 b:gray-10 px:8'>
-					<div className='d:flex align-items:center br:1 b:gray-10 py:12 min-w:300'>
+					<div className='d:flex align-items:center br:1 b:gray-10 min-w:300'>
 						<i className='ri-search-line mr:8 f:gray-20' />
 						<input
-							className='outline:none f:15'
+							className='outline:none f:15 w:100% py:12'
 							type='text'
 							placeholder='Search fonts'
 							value={search}
