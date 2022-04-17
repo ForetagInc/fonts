@@ -21,8 +21,8 @@ const Home: NextPage = () => {
 	const [search, setSearch] = React.useState('');
 
 	return (
-		<div className='h:100vh f:gray-60 bg:gray-80@dark f:white@dark'>
-			<div className='py:16 bb:1 b:gray-10 b:gray-50@dark'>
+		<div className='h:100vh'>
+			<div className='py:16 bb:1 b:gray-10 b:gray-60@dark'>
 				<div className='d:flex mx:auto w:80% justify-content:space-between align-items:center'>
 					<h1 className='f:24 f:regular'>
 						Fonts
@@ -36,8 +36,8 @@ const Home: NextPage = () => {
 			</div>
 
 			<div className='mx:auto w:80% py:24'>
-				<div className='d:flex mb:20 b:1 r:30 b:gray-10 px:8'>
-					<div className='d:flex align-items:center br:1 b:gray-10 min-w:300'>
+				<div className='d:flex mb:20 b:1 r:30 b:gray-10 b:gray-60@dark px:8'>
+					<div className='d:flex align-items:center br:1 b:gray-10 b:gray-60@dark min-w:300'>
 						<i className='ri-search-line mr:8 f:gray-20' />
 						<input
 							className='outline:none f:15 w:100% py:12'

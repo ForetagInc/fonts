@@ -81,12 +81,12 @@ export const Cards: React.FC<ICards> = ({ search }) => {
 
 						return <div
 							key={index}
-							className='b:1 b:gray-5 r:10 px:16 py:24 bg:gray-5:hover cursor:pointer f:black min-h:300'
+							className='b:1 b:gray-7 b:gray-60@dark r:10 px:16 py:24 bg:fade-5:hover bg:fade-90:hover@dark cursor:pointer f:black f:white@dark min-h:300'
 						>
 							<div className='d:flex justify-content:space-between w:100%'>
 								<div>
 									<p className='f:18'>{font.family}</p>
-									<small>{font.category}</small>
+									<small className='f:gray-60@dark'>{font.category}</small>
 								</div>
 								<small>
 									{font.weights.length} styles
