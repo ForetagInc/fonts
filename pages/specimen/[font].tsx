@@ -56,16 +56,16 @@ const Font: NextPage = () => {
 		>
 			<div className='d:flex justify-content:space-between align-items:center'>
 				<h1 className='f:36'>{currentFont?.family}</h1>
-				<div>
-					<button
-						className='f:24'
-						onClick={(e) => {
-							e.preventDefault();
-						}}
-					>
-						<i className='ri-add-line' />
-					</button>
-				</div>
+				<div />
+			</div>
+
+			<div className='my:40 p:8 bg:gray-80 r:10'>
+				<code>
+					{`<link 
+						rel='stylesheet' 
+						href='https://cdn.jsdelivr.net/npm/@fontsource/${currentFont?.id}@latest/latin.min.css' 
+					/>`}
+				</code>
 			</div>
 
 			<ul>

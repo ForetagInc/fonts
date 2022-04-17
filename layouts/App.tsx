@@ -3,6 +3,8 @@ import * as React from 'react';
 import Head from 'next/head';
 
 import { useStore } from '../lib/store';
+import { SelectBar } from '../components/SelectBar';
+import Link from 'next/link';
 
 interface ILayoutProps {
 	title: string;
@@ -11,7 +13,9 @@ interface ILayoutProps {
 export const Layout: React.FC<ILayoutProps> = (props) => {
 	const {
 		isDark,
-		toggleTheme
+		isSelectBarOpen,
+		toggleTheme,
+		toggleSelectBar
 	} = useStore(s => s);
 
 	// Theme selector
@@ -29,26 +33,40 @@ export const Layout: React.FC<ILayoutProps> = (props) => {
 			<Head>
 				<title>{props.title} - Foretag Fonts</title>
 			</Head>
-			<div className='py:16 bb:1 b:gray-10 b:gray-60@dark'>
-				<div className='d:flex mx:auto w:80% justify-content:space-between align-items:center'>
-					<h1 className='d:flex align-items:center f:24 f:regular'>
-						<img
-							className='h:36 mr:8'
-							src={`${window?.location.origin}/images/logo.svg`}
-							alt='Foretag Logo'
-						/>
-						Fonts
-					</h1>
+			<div className='d:flex'>
+				<div className='h:100vh w:100%'>
+					<div className='py:16 bb:1 b:gray-10 b:gray-60@dark'>
+						<div className={`d:flex ${isSelectBarOpen ? 'ml:40 mr:24' : 'mx:auto w:80%'} justify-content:space-between align-items:center`}>
+							<Link href='/'>
+								<h1 className='d:flex align-items:center f:24 f:regular cursor:pointer'>
+									<img
+										className='h:36 mr:8'
+										src={`${window?.location.origin}/images/logo.svg`}
+										alt='Foretag Logo'
+									/>
+									Fonts
+								</h1>
+							</Link>
 
-					<i
-						className='ri-contrast-fill f:20 f:blue-40:hover cursor:pointer'
-						onClick={() => toggleTheme()}
-					/>
+							<div>
+								<i
+									className='ri-contrast-fill f:20 f:blue-40:hover cursor:pointer'
+									onClick={() => toggleTheme()}
+								/>
+								<i
+									className='ml:24 ri-list-check-2 f:20 f:blue-40:hover cursor:pointer'
+									onClick={() => toggleSelectBar()}
+								/>
+							</div>
+						</div>
+					</div>
+					<div className={isSelectBarOpen ? 'ml:40 mr:24 py:24' : 'mx:auto w:80% py:24'}>
+						{props.children}
+					</div>
 				</div>
-			</div>
-			<div className='mx:auto w:80% py:24'>
-
-				{props.children}
+				{
+					isSelectBarOpen && <SelectBar />
+				}
 			</div>
 		</>
 
