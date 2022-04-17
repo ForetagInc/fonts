@@ -27,5 +27,3 @@ export const useStore = Zustand<IStore>(persist(
 		getStorage: () => localStorage,
 	}
 ));
-
-export const { getState, subscribe } = useStore;

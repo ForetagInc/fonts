@@ -1,12 +1,19 @@
 import * as React from 'react';
 
+import Head from 'next/head';
 import type { NextPage } from 'next';
 
 import { useStore } from '../lib/store';
 import { Cards } from '../components/Cards';
 
 const Home: NextPage = () => {
-	const { isDark, content, updateContent, toggleTheme } = useStore(s => s);
+	const {
+		isDark,
+		toggleTheme,
+		fontSize,
+		content,
+		updateContent
+	} = useStore(s => s);
 
 	// Theme selector
 	React.useEffect(() => {
@@ -22,6 +29,9 @@ const Home: NextPage = () => {
 
 	return (
 		<div className='h:100vh'>
+			<Head>
+				<title>Browser Fonts - Foretag Fonts</title>
+			</Head>
 			<div className='py:16 bb:1 b:gray-10 b:gray-60@dark'>
 				<div className='d:flex mx:auto w:80% justify-content:space-between align-items:center'>
 					<h1 className='f:24 f:regular'>
@@ -50,10 +60,10 @@ const Home: NextPage = () => {
 							}}
 						/>
 					</div>
-					<div className='d:flex align-items:center ml:8'>
+					<div className='d:flex align-items:center px:8 br:1 b:gray-10 b:gray-60@dark min-w:500'>
 						<small className='mr:16 bg:blue-40 f:white px:8 py:2 r:40'>Preview</small>
 						<input
-							className='outline:none min-w:300'
+							className='outline:none'
 							type='text'
 							placeholder='Preview'
 							value={content}

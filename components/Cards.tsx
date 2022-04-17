@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import Link from 'next/link';
+
 import type { IFont } from '../lib/interfaces';
 import { useStore } from '../lib/store';
 
@@ -79,23 +81,27 @@ export const Cards: React.FC<ICards> = ({ search }) => {
 
 						loadStylesheet(`https://cdn.jsdelivr.net/npm/@fontsource/${font.id}@latest/${url}.css`);
 
-						return <div
+						return <Link
 							key={index}
-							className='b:1 b:gray-7 b:gray-60@dark r:10 px:16 py:24 bg:fade-5:hover bg:fade-90:hover@dark cursor:pointer f:black f:white@dark min-h:300'
+							href={`/specimen/${font.id}`}
 						>
-							<div className='d:flex justify-content:space-between w:100%'>
-								<div>
-									<p className='f:18'>{font.family}</p>
-									<small className='f:gray-60@dark'>{font.category}</small>
+							<div
+								className='b:1 b:gray-7 b:gray-60@dark r:10 px:16 py:24 bg:fade-5:hover bg:fade-90:hover@dark cursor:pointer f:black f:white@dark min-h:300'
+							>
+								<div className='d:flex justify-content:space-between w:100%'>
+									<div>
+										<p className='f:18'>{font.family}</p>
+										<small className='f:gray-60@dark text-transform:capitalize'>{font.category.replace('-', ' ')}</small>
+									</div>
+									<small>
+										{font.weights.length} styles
+									</small>
 								</div>
-								<small>
-									{font.weights.length} styles
-								</small>
+								<p className='mt:20' style={{ fontSize, fontFamily: font.family }}>
+									{content}
+								</p>
 							</div>
-							<p className='mt:20' style={{ fontSize, fontFamily: font.family }}>
-								{content}
-							</p>
-						</div>
+						</Link>
 					}
 				)
 			}
