@@ -11,8 +11,6 @@ import { Layout } from '../../layouts/App';
 import { useStore } from '../../lib/store';
 import { loadStylesheet } from '../../lib/util';
 
-import { toast } from 'react-hot-toast';
-
 const Font: NextPage = () => {
 	// These fonts do not load font weights as fontsource does not support it.
 	// Instead these fonts store the CSS as 'latin' directly.
