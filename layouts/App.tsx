@@ -10,7 +10,8 @@ interface ILayoutProps {
 
 export const Layout: React.FC<ILayoutProps> = (props) => {
 	const {
-		isDark
+		isDark,
+		toggleTheme
 	} = useStore(s => s);
 
 	// Theme selector
@@ -24,11 +25,27 @@ export const Layout: React.FC<ILayoutProps> = (props) => {
 	}, [isDark]);
 
 	return (
-		<div className='mx:auto w:80% py:24'>
+		<>
 			<Head>
 				<title>{props.title} - Foretag Fonts</title>
 			</Head>
-			{props.children}
-		</div>
+			<div className='py:16 bb:1 b:gray-10 b:gray-60@dark'>
+				<div className='d:flex mx:auto w:80% justify-content:space-between align-items:center'>
+					<h1 className='f:24 f:regular'>
+						Fonts
+					</h1>
+
+					<i
+						className='ri-contrast-fill f:20 f:blue-40:hover cursor:pointer'
+						onClick={() => toggleTheme()}
+					/>
+				</div>
+			</div>
+			<div className='mx:auto w:80% py:24'>
+
+				{props.children}
+			</div>
+		</>
+
 	)
 }

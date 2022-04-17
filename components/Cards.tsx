@@ -6,6 +6,7 @@ import type { IFont } from '../lib/interfaces';
 import { useStore } from '../lib/store';
 
 import fonts from '../public/data.json';
+import { loadStylesheet } from '../lib/util';
 
 interface ICards {
 	search: string;
@@ -58,19 +59,6 @@ export const Cards: React.FC<ICards> = ({ search }) => {
 			]
 		);
 	}, [lastViewPosition]);
-
-	const loadStylesheet = (url: string) => {
-		if (typeof window !== 'undefined') {
-			let head = document.head;
-			let link = document.createElement('link');
-
-			link.type = 'text/css';
-			link.rel = 'stylesheet';
-			link.href = url;
-
-			head.appendChild(link);
-		}
-	}
 
 	return (
 		<div className='p:grid grid-cols:3@lg grid-cols:2@md grid-cols:1 gap:20'>
