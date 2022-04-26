@@ -33,6 +33,8 @@ export const Cards: React.FC<ICards> = ({ search }) => {
 	React.useEffect(() => {
 		if (search.length > 0)
 			setFontCache(fonts.filter(({ family }) => family.includes(search)));
+		else
+			setFontCache([]);
 	}, [search]);
 
 	React.useEffect(() => {
