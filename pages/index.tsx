@@ -9,6 +9,8 @@ const Home: NextPage = () => {
 	const {
 		content,
 		updateContent,
+		fontSize,
+		setFontSize,
 		toInitialState
 	} = useStore(s => s);
 
@@ -45,8 +47,18 @@ const Home: NextPage = () => {
 						}}
 					/>
 				</div>
-				<div className='flex-grow:1 br:1 b:gray-10 b:gray-60@dark'>
-					Test
+				<div className='flex-grow:1 d:flex align-items:center px:8 br:1 b:gray-10 b:gray-60@dark'>
+					<input
+						className='w:100%'
+						type='range'
+						value={fontSize}
+						onChange={(e) => {
+							e.preventDefault();
+							setFontSize(e.target.value);
+						}}
+						min={8}
+						max={300}
+					/>
 				</div>
 				<div className='d:flex align-items:center px:8'>
 					<i
