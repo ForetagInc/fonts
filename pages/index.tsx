@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
 	return (
 		<Layout
-			title='Browser Fonts'
+			title='Browse Fonts'
 		>
 			<div className='d:flex mb:20 b:1 r:30 b:gray-10 b:gray-60@dark px:8'>
 				<div className='flex-grow:0.5 d:flex align-items:center br:1 b:gray-10 b:gray-60@dark'>

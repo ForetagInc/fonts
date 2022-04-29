@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { useStore } from '../lib/store';
 import { SelectBar } from '../components/SelectBar';
-import Link from 'next/link';
 
 interface ILayoutProps {
 	title: string;
@@ -55,6 +55,7 @@ export const Layout: React.FC<ILayoutProps> = (props) => {
 										className='h:36 mr:8'
 										src={`${window?.location.origin}/images/logo.svg`}
 										alt='Foretag Logo'
+										title='Foretag Logo'
 									/>
 									Fonts
 								</h1>
