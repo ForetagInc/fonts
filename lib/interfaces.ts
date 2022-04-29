@@ -1,5 +1,3 @@
-type IFontType = 'Mono' | 'Sans Serif';
-
 export interface IFont {
 	id: string;
 	family: string;
