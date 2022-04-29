@@ -32,6 +32,18 @@ export const Layout: React.FC<ILayoutProps> = (props) => {
 		<>
 			<Head>
 				<title>{props.title} - Foretag Fonts</title>
+
+				<link rel='canonical' href={window?.location.href} />
+
+				<meta name='robots' content='index, follow' />
+
+				<meta name='description' content='An open source, production ready and privacy-friendly fonts repository based on public CDN providers' />
+				<meta name='keywords' content='fonts, open, source, cdn, repository, privacy, production, public, free' />
+				<meta name='publisher' content='Foretag Inc.' />
+
+				<meta property='og:title' content={`${props.title} - Foretag Fonts`} />
+				<meta property='og:description' content='An open source, production ready and privacy-friendly fonts repository based on public CDN providers' />
+				<meta property='og:type' content='website' />
 			</Head>
 			<div className='d:flex'>
 				<div className='h:100vh w:100%'>
