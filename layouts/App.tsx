@@ -48,9 +48,9 @@ export const Layout: React.FC<ILayoutProps> = (props) => {
 			<div className='d:flex'>
 				<div className='h:100vh w:100%'>
 					<div className='py:16 bb:1 b:gray-10 b:gray-60@dark'>
-						<div className={`d:flex ${isSelectBarOpen ? 'ml:40 mr:24' : 'mx:auto w:80%'} justify-content:space-between align-items:center`}>
+						<div className={`d:flex ${isSelectBarOpen ? 'ml:40 mr:24' : 'mx:auto w:80%'} jc:space-between ai:center`}>
 							<Link href='/'>
-								<h1 className='d:flex align-items:center f:24 f:regular cursor:pointer'>
+								<h1 className='d:flex ai:center f:24 f:regular cursor:pointer'>
 									<img
 										className='h:36 mr:8'
 										src={`${window?.location.origin}/images/logo.svg`}

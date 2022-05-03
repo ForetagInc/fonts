@@ -54,7 +54,7 @@ const Font: NextPage = () => {
 		<Layout
 			title={currentFont?.family as string}
 		>
-			<div className='d:flex justify-content:space-between align-items:center'>
+			<div className='d:flex ji:space-between ai:center'>
 				<h1 className='f:36'>{currentFont?.family}</h1>
 				<div />
 			</div>
