@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import fonts from '../../public/data.json';
 import { IFont } from '../../lib/interfaces';
+import { glyphs } from '../../lib/glyphs';
 
 import { Layout } from '../../layouts/App';
 
@@ -99,6 +100,25 @@ const Font: NextPage = () => {
 					)
 				}
 			</ul>
+
+			<div className='mt:32'>
+				<h2 className='f:light f:32'>Sample glyphs</h2>
+				<div className='d:grid grid-cols:30 mt:20'>
+					{
+						glyphs.map((glyph, index) =>
+							<p
+								key={index}
+								className='b:1 b:gray-70 text:center p:8 f:20 f:medium'
+								style={{
+									fontFamily: currentFont?.family,
+								}}
+							>
+								{glyph}
+							</p>
+						)
+					}
+				</div>
+			</div>
 		</Layout>
 	)
 };
