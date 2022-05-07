@@ -1,9 +1,12 @@
 import * as React from 'react';
+
 import type { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 
 import { useStore } from '../lib/store';
 import { Cards } from '../components/Cards';
-import { Layout } from '../layouts/App';
+
+const Layout = dynamic(() => import('../layouts/App'), { ssr: false });
 
 const Home: NextPage = () => {
 	const {

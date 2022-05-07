@@ -2,12 +2,13 @@ import * as React from 'react';
 
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 import fonts from '../../public/data.json';
 import { IFont } from '../../lib/interfaces';
 import { glyphs } from '../../lib/glyphs';
 
-import { Layout } from '../../layouts/App';
+const Layout = dynamic(() => import('../../layouts/App'), { ssr: false });
 
 import { useStore } from '../../lib/store';
 import { loadStylesheet } from '../../lib/util';

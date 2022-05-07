@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { FC, PropsWithChildren, useEffect } from 'react';
 
 import Head from 'next/head';
 import Link from 'next/link';
@@ -10,7 +10,7 @@ interface ILayoutProps {
 	title: string;
 }
 
-export const Layout: React.FC<ILayoutProps> = (props) => {
+export const Layout: FC<PropsWithChildren<ILayoutProps>> = (props) => {
 	const {
 		isDark,
 		isSelectBarOpen,
@@ -19,7 +19,7 @@ export const Layout: React.FC<ILayoutProps> = (props) => {
 	} = useStore(s => s);
 
 	// Theme selector
-	React.useEffect(() => {
+	useEffect(() => {
 		let html = document.querySelector('html')?.classList;
 
 		if (isDark)
@@ -84,4 +84,6 @@ export const Layout: React.FC<ILayoutProps> = (props) => {
 		</>
 
 	)
-}
+};
+
+export default Layout;
