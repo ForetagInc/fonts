@@ -78,7 +78,7 @@ export const Cards: React.FC<ICards> = ({ search }) => {
 							<div
 								className='b:1 b:gray-7 b:gray-60@dark r:10 px:16 py:24 bg:fade-5:hover bg:fade-90:hover@dark cursor:pointer f:black f:white@dark min-h:300'
 							>
-								<div className='d:flex justify-content:space-between w:100%'>
+								<div className='d:flex jc:space-between w:100%'>
 									<div>
 										<p className='f:18'>{font.family}</p>
 										<small className='f:gray-60@dark text-transform:capitalize'>{font.category.replace('-', ' ')}</small>

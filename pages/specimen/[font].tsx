@@ -2,11 +2,13 @@ import * as React from 'react';
 
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 import fonts from '../../public/data.json';
 import { IFont } from '../../lib/interfaces';
+import { glyphs } from '../../lib/glyphs';
 
-import { Layout } from '../../layouts/App';
+const Layout = dynamic(() => import('../../layouts/App'), { ssr: false });
 
 import { useStore } from '../../lib/store';
 import { loadStylesheet } from '../../lib/util';
@@ -54,7 +56,7 @@ const Font: NextPage = () => {
 		<Layout
 			title={currentFont?.family as string}
 		>
-			<div className='d:flex justify-content:space-between align-items:center'>
+			<div className='d:flex ji:space-between ai:center'>
 				<h1 className='f:36'>{currentFont?.family}</h1>
 				<div />
 			</div>
@@ -99,6 +101,25 @@ const Font: NextPage = () => {
 					)
 				}
 			</ul>
+
+			<div className='mt:32'>
+				<h2 className='f:light f:32'>Sample glyphs</h2>
+				<div className='d:grid grid-cols:30 mt:20'>
+					{
+						glyphs.map((glyph, index) =>
+							<p
+								key={index}
+								className='b:1 b:gray-70 text:center p:8 f:20 f:medium'
+								style={{
+									fontFamily: currentFont?.family,
+								}}
+							>
+								{glyph}
+							</p>
+						)
+					}
+				</div>
+			</div>
 		</Layout>
 	)
 };

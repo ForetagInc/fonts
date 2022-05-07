@@ -33,27 +33,34 @@ let initialState = {
 	selectedFonts: [],
 };
 
-export const useStore = Zustand<IStore>(persist(
-	(set, get) => ({
-		...initialState,
+export const useStore =
+	Zustand
+		<
+			IStore,
+			[
+				['zustand/persist', IStore]
+			]
+		>(persist(
+			(set, get) => ({
+				...initialState,
 
-		/* Actions */
-		toInitialState: () => set({ ...initialState }),
-		toggleTheme: () => set({ isDark: !get().isDark }),
-		toggleSelectBar: () => set({ isSelectBarOpen: !get().isSelectBarOpen }),
-		setFontSize: (fontSize: string) => {
-			let font = parseInt(fontSize);
-			if (font <= 300
-				&& font >= 8) set({ fontSize: font })
-			else
-				set({ fontSize: initialState.fontSize })
-		},
-		updateContent: (newContent: string) => set({ content: newContent }),
-		addSelectedFont: (family: string, weight: number) =>
-			set({ selectedFonts: [...get().selectedFonts, { family, weight }] }),
-	}),
-	{
-		name: 'fonts',
-		getStorage: () => localStorage,
-	}
-));
+				/* Actions */
+				toInitialState: () => set({ ...initialState }),
+				toggleTheme: () => set({ isDark: !get().isDark }),
+				toggleSelectBar: () => set({ isSelectBarOpen: !get().isSelectBarOpen }),
+				setFontSize: (fontSize: string) => {
+					let font = parseInt(fontSize);
+					if (font <= 300
+						&& font >= 8) set({ fontSize: font })
+					else
+						set({ fontSize: initialState.fontSize })
+				},
+				updateContent: (newContent: string) => set({ content: newContent }),
+				addSelectedFont: (family: string, weight: number) =>
+					set({ selectedFonts: [...get().selectedFonts, { family, weight }] }),
+			}),
+			{
+				name: 'fonts',
+				getStorage: () => localStorage,
+			}
+		));
