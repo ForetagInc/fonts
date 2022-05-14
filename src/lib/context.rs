@@ -1,3 +1,12 @@
+use std::rc::Rc;
+use yew::prelude::*;
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct Font {
+	family: String,
+	weight: i16,
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub struct Store {
 	pub is_dark: bool,
@@ -9,8 +18,12 @@ pub struct Store {
 	pub selected_fonts: Vec<Font>,
 }
 
-#[derive(Clone, Debug, PartialEq)]
-pub struct Font {
-	family: String,
-	weight: i16,
+impl Reducible for Store {
+	type Action = Store;
+
+	fn reduce(self: Rc<Self>, action: Self::Action) -> Rc<Self> {
+		Store { ..action }.into()
+	}
 }
+
+pub type StoreContext = UseReducerHandle<Store>;
