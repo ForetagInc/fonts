@@ -1,5 +1,6 @@
 mod glyphs;
 mod lib;
+mod types;
 
 use lib::context::Store;
 
