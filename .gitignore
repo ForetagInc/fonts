@@ -5,5 +5,8 @@
 # local env files
 .env*.local
 
+# Build
+dist
+
 # Added by cargo
 /target

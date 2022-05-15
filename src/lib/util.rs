@@ -1,5 +1,3 @@
-use yew::prelude::*;
-
 pub fn load_stylesheet(href: &str) {
 	let window = web_sys::window().unwrap();
 	let document = window.document().unwrap();
