@@ -6,9 +6,15 @@ use yew::prelude::*;
 
 #[function_component]
 fn App() -> Html {
+	let window = web_sys::window().unwrap();
+
 	let store = use_memo(
 		|_| Store {
-			is_dark: false,
+			is_dark: window
+				.match_media("(prefers-color-scheme: dark)")
+				.unwrap()
+				.unwrap()
+				.matches(),
 			is_selectbar_open: false,
 			content: String::from("Almost before we knew it, we had left the ground."),
 			font_size: 40,
