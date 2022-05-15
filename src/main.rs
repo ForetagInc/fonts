@@ -1,4 +1,6 @@
+mod glyphs;
 mod lib;
+
 use lib::context::Store;
 
 use std::rc::Rc;
