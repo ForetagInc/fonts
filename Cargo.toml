@@ -4,5 +4,6 @@ version = '0.2.0'
 edition = '2021'
 
 [dependencies]
+log = '0.4'
 yew = { git = 'https://github.com/yewstack/yew/', features = ['csr'] }
 web-sys = { version = '0.3', features = ['MediaQueryList'] }
